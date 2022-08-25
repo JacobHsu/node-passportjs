@@ -5,6 +5,12 @@ const passportSetup = require('./passport');
 const passport = require('passport');
 const authRoute = require('./routes/auth');
 const app = express();
+
+const product = require("./api/product");
+
+app.use(express.json({ extended: false }));
+app.use("/api/product", product);
+
 // const path = require('path');
 
 // app.use(express.static('public'));
@@ -31,8 +37,8 @@ app.use(
 
 app.use('/auth', authRoute);
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`http://localhost:${PORT} Server is running!`);
 });
