@@ -31,6 +31,8 @@ app.use(
 
 app.use('/auth', authRoute);
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log('http://localhost:5000 Server is running!');
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`http://localhost:${PORT} Server is running!`);
 });
