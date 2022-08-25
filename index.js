@@ -5,6 +5,7 @@ const passportSetup = require('./passport');
 const passport = require('passport');
 const authRoute = require('./routes/auth');
 const app = express();
+const path = require('path');
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
@@ -29,5 +30,5 @@ app.use(
 app.use('/auth', authRoute);
 
 app.listen('5000', () => {
-  console.log('port:5000 Server is running!');
+  console.log('http://localhost:5000 Server is running!');
 });
