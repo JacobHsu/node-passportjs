@@ -5,12 +5,14 @@ const passportSetup = require('./passport');
 const passport = require('passport');
 const authRoute = require('./routes/auth');
 const app = express();
-const path = require('path');
+// const path = require('path');
 
-app.use(express.static('public'));
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, 'public') });
-});
+// app.use(express.static('public'));
+// app.get('/', (req, res) => {
+//   res.sendFile('index.html', { root: path.join(__dirname, 'public') });
+// });
+
+app.get('/', (req, res) => res.send('Home Page Route'));
 
 app.use(
   cookieSession({ name: 'session', keys: ['lama'], maxAge: 24 * 60 * 60 * 100 })
@@ -29,6 +31,6 @@ app.use(
 
 app.use('/auth', authRoute);
 
-app.listen('5000', () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log('http://localhost:5000 Server is running!');
 });
