@@ -3,20 +3,11 @@ const express = require('express');
 const cors = require('cors');
 const passportSetup = require('./passport');
 const passport = require('passport');
-const authRoute = require('./routes/auth');
 const app = express();
-
-const product = require("./api/product");
+const product = require('./api/product');
+const authRoute = require('./routes/auth');
 
 app.use(express.json({ extended: false }));
-app.use("/api/product", product);
-
-// const path = require('path');
-
-// app.use(express.static('public'));
-// app.get('/', (req, res) => {
-//   res.sendFile('index.html', { root: path.join(__dirname, 'public') });
-// });
 
 app.get('/', (req, res) => res.send('Home Page Route'));
 
@@ -26,6 +17,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use('/api/product', product);
 
 app.use(
   cors({
@@ -38,5 +31,4 @@ app.use(
 app.use('/auth', authRoute);
 
 const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => { console.log(`http://localhost:${PORT} Server is running!`);});
+app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
