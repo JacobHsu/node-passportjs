@@ -28,6 +28,14 @@ app.use(
   })
 );
 
+app.use(
+  cors({
+    origin: 'https://react-mui-auth-phone.vercel.app',
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true,
+  })
+);
+
 app.use('/auth', authRoute);
 
 const PORT = process.env.PORT || 5000;
