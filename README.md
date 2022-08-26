@@ -18,4 +18,23 @@ npm install passport@0.5
 
 [passport](https://www.npmjs.com/package/passport) 0.6.0 降版到 0.5.3
 
+### vercel.app
 
+This Serverless Function has crashed. 
+500: INTERNAL_SERVER_ERROR
+
+要改成一行
+
+```js
+router.get(
+  '/google/callback',
+  passport.authenticate('google', {
+    successRedirect: CLIENT_URL,
+    failureRedirect: '/login/failed',
+  })
+);
+```
+
+```js
+router.get('/google/callback', passport.authenticate('google', { successRedirect: CLIENT_URL, failureRedirect: '/login/failed',}));
+```
