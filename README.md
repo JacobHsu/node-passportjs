@@ -37,4 +37,7 @@ router.get(
 
 ```js
 router.get('/google/callback', passport.authenticate('google', { successRedirect: CLIENT_URL, failureRedirect: '/login/failed',}));
+
+app.listen(PORT, () => { console.log(`http://localhost:${PORT} Server is running!`);});
+
 ```
